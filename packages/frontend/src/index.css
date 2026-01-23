@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* Base styles - Compact UI with ~20% reduced font sizes */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  font-weight: 400;
+  /* Base font size reduced from default 16px to ~13px (20% reduction) */
+  font-size: 13px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Compact form elements */
+input[type="text"],
+input[type="number"],
+select {
+  font-size: 11px;
+}
+
+/* Compact labels */
+label {
+  font-size: 10px;
+}
+
+/* Fix for Fabric.js Textbox editing scroll issue
+   When clicking a Textbox to edit, Fabric.js creates a hidden textarea for input.
+   By default, this textarea may be positioned outside the viewport, causing
+   the browser to auto-scroll to bring it into view.
+   This CSS keeps the textarea at a fixed position to prevent unwanted scroll. */
+.canvas-container textarea,
+.upper-canvas ~ textarea,
+canvas + textarea {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  opacity: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
